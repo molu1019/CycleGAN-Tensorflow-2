@@ -46,27 +46,27 @@ py.args_to_yaml(py.join(output_dir, 'settings.yml'), args)
 # =                                    data                                    =
 # ==============================================================================
 
-A_img_paths = py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.jpg') +
+A_img_paths = (py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.jpg') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.png') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.JPG') +
-                py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.PNG')
-B_img_paths = py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.jpg') +
+                py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.PNG'))
+B_img_paths = (py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.jpg') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.png') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.JPG') +
-                py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.PNG')
+                py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.PNG'))
 A_B_dataset, len_dataset = data.make_zip_dataset(A_img_paths, B_img_paths, args.batch_size, args.load_size, args.crop_size, training=True, repeat=False)
 
 A2B_pool = data.ItemPool(args.pool_size)
 B2A_pool = data.ItemPool(args.pool_size)
 
-A_img_paths_test = py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.jpg')+
+A_img_paths_test = (py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.jpg', recursive=TRUE)+
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.png') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.JPG') +
-                py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.PNG')
-B_img_paths_test = py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.jpg')+
+                py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.PNG'))
+B_img_paths_test = (py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.jpg')+
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.png') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.JPG') +
-                py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.PNG')
+                py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.PNG'))
 A_B_dataset_test, _ = data.make_zip_dataset(A_img_paths_test, B_img_paths_test, args.batch_size, args.load_size, args.crop_size, training=False, repeat=True)
 
 
