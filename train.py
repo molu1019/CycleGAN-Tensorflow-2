@@ -59,7 +59,7 @@ A_B_dataset, len_dataset = data.make_zip_dataset(A_img_paths, B_img_paths, args.
 A2B_pool = data.ItemPool(args.pool_size)
 B2A_pool = data.ItemPool(args.pool_size)
 
-A_img_paths_test = (py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.jpg', recursive=TRUE)+
+A_img_paths_test = (py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.jpg', recursive=True)+
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.png') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.JPG') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.PNG'))
