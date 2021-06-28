@@ -1,6 +1,6 @@
 import numpy as np
 import skimage.io as iio
-
+import cv2
 from imlib import dtype
 
 
@@ -18,10 +18,11 @@ def imread(path, as_gray=False, **kwargs):
     return image
 
 
-def imwrite(image, path, quality=95, **plugin_args):
+#def imwrite(image, path, quality=95, **plugin_args):
+def imwrite(image, path, **plugin_args):
     """Save a [-1.0, 1.0] image."""
-    iio.imsave(path, dtype.im2uint(image), quality=quality, **plugin_args)
-
+    #iio.imsave(path, dtype.im2uint(image), quality=quality, **plugin_args)
+    iio.imsave(path, dtype.im2uint(image), **plugin_args)
 
 def imshow(image):
     """Show a [-1.0, 1.0] image."""

@@ -1,6 +1,7 @@
 import multiprocessing
 
 import tensorflow as tf
+from tensorflow.python.ops.gen_string_ops import as_string
 
 
 def batch_dataset(dataset,
@@ -110,6 +111,7 @@ def disk_image_batch_dataset(img_paths,
 
     if map_fn:  # fuse `map_fn` and `parse_fn`
         def map_fn_(*args):
+            ##print(f"#{tf.strings.as_string(args[0])}#")
             return map_fn(*parse_fn(*args))
     else:
         map_fn_ = parse_fn
