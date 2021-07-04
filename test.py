@@ -1,3 +1,6 @@
+from sys import path
+import cv2
+from skimage.io.collection import ImageCollection
 import imlib as im
 import numpy as np
 import pylib as py
@@ -59,17 +62,29 @@ def sample_B2A(B):
 
 # run
 save_dir = py.join(args.experiment_dir, 'samples_testing', 'A2B')
-save_FID = py.join(args.experiment_dir, 'samples_testing', 'A2B_FID')
 py.mkdir(save_dir)
-py.mkdir(save_FID)
 i = 0
+
 for A in A_dataset_test:
     A2B, A2B2A = sample_A2B(A)
     for A_i, A2B_i, A2B2A_i in zip(A, A2B, A2B2A):
         img = np.concatenate([A_i.numpy(), A2B_i.numpy(), A2B2A_i.numpy()], axis=1)
         im.imwrite(img, py.join(save_dir, py.name_ext(A_img_paths_test[i])))
-        im.imwrite(img, py.join(save_FID, py.name_ext(A_img_paths_test[i])))
         i += 1
+
+import imageio
+import os
+save_FID = py.join(args.experiment_dir, 'samples_testing', 'A2B_FID')
+py.mkdir(save_FID)
+i = 0
+# save Image as single image B for FID calculation
+for A in A_dataset_test:
+    A2B, A2B2A = sample_A2B(A)
+    for A_i, A2B_i, A2B2A_i in zip(A, A2B, A2B2A):
+        imgB = A2B_i.numpy()
+        imageio.imwrite(os.path.join(save_FID ,(py.name_ext(A_img_paths_test[i]))), imgB)
+        i += 1
+
 
 save_dir = py.join(args.experiment_dir, 'samples_testing', 'B2A')
 save_FID = py.join(args.experiment_dir, 'samples_testing', 'B2A_FID')
