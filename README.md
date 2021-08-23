@@ -2,9 +2,7 @@
 
 - Our GAN based work for facial attribute editing - [AttGAN](https://github.com/LynnHo/AttGAN-Tensorflow).
 
-***News***
 
-- We re-implement CycleGAN by **Tensorflow 2**! The old versions are here: [v1](https://github.com/LynnHo/CycleGAN-Tensorflow-PyTorch/tree/v1), [v0](https://github.com/LynnHo/CycleGAN-Tensorflow-PyTorch/tree/v0).
 
 <hr style="height:1px" />
 
@@ -22,11 +20,6 @@ Author: [Jun-Yan Zhu ](https://people.eecs.berkeley.edu/~junyanz/) *et al.*
 
 ## Exemplar results
 
-### summer2winter
-
-row 1: summer -> winter -> reconstructed summer, row 2: winter -> summer -> reconstructed winter
-
-<p align="center"> <img src="./pics/summer2winter.jpg" width="100%" /> </p>
 
 ### horse2zebra
 
@@ -34,11 +27,9 @@ row 1: horse -> zebra -> reconstructed horse, row 2: zebra -> horse -> reconstru
 
 <p align="center"> <img src="./pics/horse2zebra.jpg" width="100%" /> </p>
 
-### apple2orange
+### Powertrain
 
-row 1: apple -> orange -> reconstructed apple, row 2: orange -> apple -> reconstructed orange
 
-<p align="center"> <img src="./pics/apple2orange.jpg" width="100%" /> </p>
 
 # Usage
 
