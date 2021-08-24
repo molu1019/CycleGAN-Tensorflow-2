@@ -63,12 +63,6 @@ row 1: horse -> zebra -> reconstructed horse, row 2: zebra -> horse -> reconstru
 
 - Dataset
 
-    - download the summer2winter dataset
-
-        ```console
-        sh ./download_dataset.sh summer2winter_yosemite
-        ```
-
     - download the horse2zebra dataset
 
         ```console
@@ -80,17 +74,17 @@ row 1: horse -> zebra -> reconstructed horse, row 2: zebra -> horse -> reconstru
 - Example of training
 
     ```console
-    CUDA_VISIBLE_DEVICES=0 python train.py --dataset summer2winter_yosemite
+    CUDA_VISIBLE_DEVICES=0 python train.py --dataset Powertrain
     ```
 
     - tensorboard for loss visualization
 
         ```console
-        tensorboard --logdir ./output/summer2winter_yosemite/summaries --port 6006
+        tensorboard --logdir ./output/Powertrain/summaries --port 6006
         ```
 
 - Example of testing
 
     ```console
-    CUDA_VISIBLE_DEVICES=0 python test.py --experiment_dir ./output/summer2winter_yosemite
+    CUDA_VISIBLE_DEVICES=0 python test.py --experiment_dir ./output/Powertrain
     ```
