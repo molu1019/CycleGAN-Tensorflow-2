@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./tf2lib/utils",
+        "./resize_images_pascalvoc"
+    ]
+}
