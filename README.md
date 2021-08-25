@@ -6,7 +6,7 @@
 
 <hr style="height:1px" />
 
-<p align="center"> <img src="./pics/horse2zebra.gif" width="100%" /> </p>
+<p align="center">  </p>
 
 <hr style="height:1px" />
 
@@ -25,7 +25,7 @@ Author: [Jun-Yan Zhu ](https://people.eecs.berkeley.edu/~junyanz/) *et al.*
 
 row 1: horse -> zebra -> reconstructed horse, row 2: zebra -> horse -> reconstructed zebra
 
-<p align="center"> <img src="./pics/horse2zebra.jpg" width="100%" /> </p>
+<p align="center">  </p>
 
 ### Powertrain
 
