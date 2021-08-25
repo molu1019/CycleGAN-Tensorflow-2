@@ -2,3 +2,6 @@
 __pycache__/
 /datasets/
 /output/
+
+#ignore test data labels
+#*.xml

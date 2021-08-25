@@ -1,3 +1,4 @@
+from posixpath import join
 from sys import path
 import cv2
 from skimage.io.collection import ImageCollection
@@ -6,7 +7,7 @@ import numpy as np
 import pylib as py
 import tensorflow as tf
 import tf2lib as tl
-
+import glob
 import data
 import module
 
@@ -31,8 +32,8 @@ A_img_paths_test = (py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '
                     py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.PNG')+
                     py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.JPG'))
 B_img_paths_test = (py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.jpg')+
-                    py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.png')+
-                    py.glob(py.join(args.datasets_dir, args.dataset, 'testA'), '*.JPG'))
+                    py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.png')+
+                    py.glob(py.join(args.datasets_dir, args.dataset, 'testB'), '*.JPG'))
 A_dataset_test = data.make_dataset(A_img_paths_test, args.batch_size, args.load_size, args.crop_size,
                                    training=False, drop_remainder=False, shuffle=False, repeat=1)
 B_dataset_test = data.make_dataset(B_img_paths_test, args.batch_size, args.load_size, args.crop_size,
@@ -74,9 +75,22 @@ for A in A_dataset_test:
 
 import imageio
 import os
+import shutil
 save_FID = py.join(args.experiment_dir, 'samples_testing', 'A2B_FID')
 py.mkdir(save_FID)
 i = 0
+# Copy XML labels
+src = py.join(args.datasets_dir, args.dataset, 'testA')
+
+for jpgfile in glob.glob(os.path.join(src, "*.xml")):
+    shutil.copy(jpgfile, save_FID)
+try:
+    shutil.copyfile(src, save_FID)
+    print("XML labels copied successfully.")
+# for general errors
+except:
+    print("Error occurred while copying file.")
+
 # save Image as single image B for FID calculation
 for A in A_dataset_test:
     A2B, A2B2A = sample_A2B(A)
