@@ -88,3 +88,7 @@ row 1: horse -> zebra -> reconstructed horse, row 2: zebra -> horse -> reconstru
     ```console
     CUDA_VISIBLE_DEVICES=0 python test.py --experiment_dir ./output/Powertrain
     ```
+
+
+Credits: 
+Resize labels: https://github.com/italojs/resize_dataset_pascalvoc
