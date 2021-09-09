@@ -41,6 +41,12 @@ py.mkdir(output_dir)
 # save settings
 py.args_to_yaml(py.join(output_dir, 'settings.yml'), args)
 
+# ==============================================================================
+# =                                    data augmentation                       =
+# ==============================================================================
+
+trainA = py.join(args.dataset)
+#data_augmentation(args.dataset)
 
 # ==============================================================================
 # =                                    data                                    =
@@ -53,7 +59,8 @@ A_img_paths = (py.glob(py.join(args.datasets_dir, args.dataset, 'trainA'), '*.jp
 B_img_paths = (py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.jpg') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.png') +
                 py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.JPG') +
-                py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.PNG'))
+                py.glob(py.join(args.datasets_dir, args.dataset, 'trainB'), '*.PNG') +
+
 A_B_dataset, len_dataset = data.make_zip_dataset(A_img_paths, B_img_paths, args.batch_size, args.load_size, args.crop_size, training=True, repeat=False)
 
 A2B_pool = data.ItemPool(args.pool_size)

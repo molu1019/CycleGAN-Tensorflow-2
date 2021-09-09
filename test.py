@@ -32,7 +32,7 @@ args.__dict__.update(test_args.__dict__)
 
 dataset_path = py.join(args.datasets_dir, args.dataset, 'testA')
 output_path = py.join(args.datasets_dir, args.dataset, 'testA')
-py.mkdir(output_path)
+#py.mkdir(output_path)
 save_box_images = True
 resize_label(save_box_images, dataset_path, output_path, new_x=256, new_y=256)
 
