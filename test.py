@@ -33,8 +33,9 @@ args.__dict__.update(test_args.__dict__)
 dataset_path = py.join(args.datasets_dir, args.dataset, 'testA')
 output_path = py.join(args.datasets_dir, args.dataset, 'testA')
 #py.mkdir(output_path)
-save_box_images = True
-resize_label(save_box_images, dataset_path, output_path, new_x=256, new_y=256)
+# uncomment to resize and copy xml labels
+#save_box_images = True
+#resize_label(save_box_images, dataset_path, output_path, new_x=256, new_y=256)
 
 # ==============================================================================
 # =                                    test                                    =
@@ -97,16 +98,16 @@ save_FID = py.join(args.experiment_dir, 'samples_testing', 'A2B_FID')
 py.mkdir(save_FID)
 i = 0
 # Copy XML labels
-src = py.join(args.datasets_dir, args.dataset, 'testA')
+#src = py.join(args.datasets_dir, args.dataset, 'testA')
 
-for jpgfile in glob.glob(os.path.join(src, "*.xml")):
-    shutil.copy(jpgfile, save_FID)
-try:
-    shutil.copyfile(src, save_FID)
-    print("XML labels copied successfully.")
+#for jpgfile in glob.glob(os.path.join(src, "*.json")):
+#    shutil.copy(jpgfile, save_FID)
+#try:
+#    shutil.copyfile(src, save_FID)
+#    print("json labels copied successfully.")
 # for general errors
-except:
-    print("Error occurred while copying file.")
+#except:
+#    print("Error occurred while copying file.")
 
 # save Image as single image B for FID calculation
 for A in A_dataset_test:
